@@ -1,0 +1,50 @@
+<!doctype HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>ncreato</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="static/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="static/css/owl.theme.default.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+<div class="wrapper">
+	<div class="container" data-bind="foreach: { data: sections, as: 'sections' }">
+	   	<div class="block">
+			<!-- <span data-bind="text: title"> </span> -->
+	   		<div class="block-inner">
+
+		   		<div class="left">
+		   			<h1 data-bind="text: title">Recommended for You</h1>
+		   			<button>See More</button>
+		   		</div>
+		   		<div id="userdata" class="right">
+		   			<div class="owl-carousel"  data-bind="foreach: { data: bookList, as: 'bookList' }, owlCarouselInitiator">
+			   			<div class="book">
+			   				<a data-bind="attr: { href: bookList.url }">
+				   				<div class="cover"><img data-bind="attr: { src: bookList.imageUrl }" alt="title"/></div>
+				   				<div class="info">
+				   					<h3 class="title" data-bind="text: bookList.title">क्या होगा आगे..?! - सस्पेंस कहानियाँ</h3>
+				   					<h5><span class="author" data-bind="text: bookList.author.name">author</span><span class="readers color" data-bind="text: bookList.readCount">readcount</span></h5>
+				   					<h6>Rating:&nbsp;<span class="rating"><span data-bind="text: bookList.averageRating">ratingCount</span>/5</span></h6>
+				   				</div>
+				   			</a>
+			   			</div>
+			   		</div>
+		   		</div>
+		   	</div>
+	   	</div>
+	</div>
+</div>
+<script src="static/js/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+<script src="static/js/main.js"></script>
+</body>
+</html>
