@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>ncreato</title>
+	<title>Pratilipi</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -12,10 +12,60 @@
 	<link rel="stylesheet" href="static/css/owl.theme.default.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
 	<link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
-<div class="wrapper">
+	<header>
+		<div class="header-inner logo">
+			<span class="logo-inner"></span>
+			<button>प्रतिलिपि&nbsp;<i class="fa fa-lg fa-caret-down"></i></button>
+		</div>
+		<div class="header-inner search">
+			<input type="search" placeholder="search"/>
+			<i class="fa fa-lg fa-search"></i>
+		</div>
+	</header>
+	<div class="wrapper">
+		<!-- banners carousel -->
+		<div id="banners" style="display:none">
+			<div id="owl1" class="banners" data-bind="foreach: bannerList, owlCarouselInitiator">
+				<div class="item">
+					<a data-bind="attr: { 'href': $data.actionUrl }" >
+						<img class="carous" data-bind="attr: { 'src': $data.imageUrl, 'alt': $data.title }" />
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- items carousel -->
+		<div id="sections" data-bind="foreach: sections">
+			<h1 data-bind="text: title">List heading</h1>
+			<div class="section-carousel owl-carousel owl-carousel2"  data-bind="foreach: { data: pratilipiList, as: 'pratilipiList' }, owlCarouselInitiator">
+				<div class="item">
+					<div class="list-item-cover">
+						<img data-bind="attr: { 'src': pratilipiList.coverImageUrl, 'alt': $data.title }"/>
+					</div>
+					<div class="list-item-desc" style="display:none">
+						<h4><span data-bind="text: pratilipiList.title">Content Name 1</span>&nbsp;<span data-bind="text: pratilipiList.averageRating"></span></h4>
+						<h5>Read by <span data-bind="text: pratilipiList.readCount">3,08,400</span></h5>
+						<h6 data-bind="text: pratilipiList.summary"></h6>
+						<p></p>
+						<a data-bind="attr: { 'href': pratilipiList.pageUrl }"><button>READ</button></a>
+					</div>
+				</div>
+			</div>
+			<div class="desc">
+				<div class="desc-inner">
+					<h4><span>Content Name 1</span>&nbsp;<span data-bind="text: pratilipiList.averageRating"></span></h4>
+					<h5>Read by <span data-bind="text: pratilipiList.readCount">3,08,400</span></h5>
+					<h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt purus felis, eu placerat nulla posuere et. Praesent et nulla sed lectus fermentum suscipit in a tortor. Sed nec tempus justo, vel pretium orci. Sed consequat porta euismod. Mauris hendrerit eros purus, ac tincidunt nulla condimentum non. Nullam justo turpis, eleifend vel fringilla ut, pellentesque sit amet dui. Donec odio nibh, dignissim quis elementum non, efficitur a neque. Ut luctus suscipit risus quis pellentesque. Proin vitae accumsan tortor. Curabitur ullamcorper condimentum lobortis. Donec lorem ex, feugiat eget condimentum quis, lacinia ac ex. Cras ante nisi, rutrum quis ante sit amet, imperdiet semper arcu. Nulla gravida semper nulla. Vivamus dictum interdum auctor. Vivamus tempor nisl at sapien ultrices, in vehicula ligula elementum. Integer iaculis purus vel purus efficitur, ut ullamcorper lacus dictum.</h6>
+				</div>
+				<a data-bind="attr: { 'href': pratilipiList.pageUrl }"><button>READ</button></a>
+			</div>			
+		</div>
+	</div>
+<!-- <div class="wrapper">
 	<div class="container" data-bind="foreach: { data: sections, as: 'sections' }">
 	   	<div class="block">
 	   		<div class="block-inner">
@@ -40,11 +90,21 @@
 		   	</div>
 	   	</div>
 	</div>
-</div>
+</div> -->
 <script src="static/js/owl.carousel.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
 <script src="static/js/main.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
 <script>
+$( document ).ready(function() {
+	var a = $('.section-carousel .owl-item.active:first .list-item-desc').html();
+	var b = $('.desc').html(a);
+});
+$('.banners').slick({
+	dots:true,
+	cssEase:'linear',
+});
 </script>
+
 </body>
 </html>
